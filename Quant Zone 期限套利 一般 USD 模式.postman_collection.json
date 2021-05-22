@@ -1,0 +1,1011 @@
+{
+	"info": {
+		"_postman_id": "fc71827e-5613-485b-819e-fda49a1d95b0",
+		"name": "Quant Zone 期限套利 一般 USD 模式",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Init Variables",
+			"item": [
+				{
+					"name": "參數 - 正常",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"open_spread_xl\", 1.02);",
+									"pm.collectionVariables.set(\"open_spread_l\", 1.005);",
+									"pm.collectionVariables.set(\"open_spread_m\", 1.004);",
+									"pm.collectionVariables.set(\"open_spread_s\", 1.003);",
+									"pm.collectionVariables.set(\"close_spread_xl\", 0.985);",
+									"pm.collectionVariables.set(\"close_spread_l\", 0.995);",
+									"pm.collectionVariables.set(\"close_spread_m\", 1);",
+									"pm.collectionVariables.set(\"close_spread_s\", 1.003);",
+									"console.log(\"success.\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "postman-echo.com/get",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "參數 - 放寬開倉條件",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"open_spread_xl\", 1.02);",
+									"pm.collectionVariables.set(\"open_spread_l\", 1.003);",
+									"pm.collectionVariables.set(\"open_spread_m\", 1.003);",
+									"pm.collectionVariables.set(\"open_spread_s\", 1.0025);",
+									"pm.collectionVariables.set(\"close_spread_xl\", 0.985);",
+									"pm.collectionVariables.set(\"close_spread_l\", 0.995);",
+									"pm.collectionVariables.set(\"close_spread_m\", 1);",
+									"pm.collectionVariables.set(\"close_spread_s\", 1.003);",
+									"console.log(\"success.\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "postman-echo.com/get",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "參數 - 關倉",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"open_spread_xl\", 1.02);",
+									"pm.collectionVariables.set(\"open_spread_l\", 1.007);",
+									"pm.collectionVariables.set(\"open_spread_m\", 1.006);",
+									"pm.collectionVariables.set(\"open_spread_s\", 1.005);",
+									"pm.collectionVariables.set(\"close_spread_xl\", 1);",
+									"pm.collectionVariables.set(\"close_spread_l\", 1);",
+									"pm.collectionVariables.set(\"close_spread_m\", 1);",
+									"pm.collectionVariables.set(\"close_spread_s\", 1.003);",
+									"console.log(\"success.\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "postman-echo.com/get",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set auth (Joe)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var joe_auth = pm.globals.get(\"joe_auth_token\");",
+									"pm.collectionVariables.set(\"auth_token\", joe_auth);",
+									"console.log(\"success.\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "postman-echo.com/get",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set auth (Samael)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var auth = pm.globals.get(\"samael_auth_token\");",
+									"pm.collectionVariables.set(\"auth_token\", auth);",
+									"console.log(\"success.\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "postman-echo.com/get",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set auth (Uerica)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var auth = pm.globals.get(\"uerica_auth_token\");",
+									"pm.collectionVariables.set(\"auth_token\", auth);",
+									"console.log(\"success.\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "postman-echo.com/get",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "一般USD期限套利 Rules",
+			"item": [
+				{
+					"name": "1. Set Variables",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "ftx.com"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Google Chrome\";v=\"89\", \"Chromium\";v=\"89\", \";Not A Brand\";v=\"99\""
+							},
+							{
+								"key": "authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "ftx-client",
+								"value": "web"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
+							},
+							{
+								"key": "ftx-subaccount",
+								"value": "{{sub_account}}"
+							},
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "origin",
+								"value": "https://ftx.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://ftx.com/quant-zone/rules/new"
+							},
+							{
+								"key": "accept-language",
+								"value": "en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7"
+							},
+							{
+								"key": "cookie",
+								"value": "__cfduid=d981e857042ba9f5d8d8441afea2d27781618337076; _ga=GA1.2.1341219748.1618337078; _gid=GA1.2.1843541768.1618337078; _fbp=fb.1.1618337086817.655571413; _gat=1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"set variables\",\n    \"condition\": \"true\",\n    \"actions\": [\n        {\n            \"type\": \"setVariable\",\n            \"name\": \"amount\",\n            \"value\": \"{{amount}}\"\n        },\n        {\n            \"type\": \"setVariable\",\n            \"name\": \"usd_amount\",\n            \"value\": \"{{usd_amount}}\"\n        },\n        {\n            \"type\": \"setVariable\",\n            \"name\": \"taker_fee\",\n            \"value\": \"{{taker_fee}}\",\n            \"new\": true\n        },\n        {\n            \"type\": \"setVariable\",\n            \"name\": \"quantity_step\",\n            \"value\": \"{{quantity_step}}\",\n            \"new\": true\n        },\n        {\n            \"type\": \"setVariable\",\n            \"name\": \"open_spread_xl\",\n            \"value\": \"{{open_spread_xl}}\",\n            \"new\": true\n        },\n        {\n            \"type\": \"setVariable\",\n            \"name\": \"open_spread_l\",\n            \"value\": \"{{open_spread_l}}\",\n            \"new\": true\n        },\n        {\n            \"type\": \"setVariable\",\n            \"name\": \"open_spread_m\",\n            \"value\": \"{{open_spread_m}}\",\n            \"new\": true\n        },\n        {\n            \"type\": \"setVariable\",\n            \"name\": \"open_spread_s\",\n            \"value\": \"{{open_spread_s}}\",\n            \"new\": true\n        },\n        {\n            \"type\": \"setVariable\",\n            \"name\": \"close_spread_xl\",\n            \"value\": \"{{close_spread_xl}}\",\n            \"new\": true\n        },\n        {\n            \"type\": \"setVariable\",\n            \"name\": \"close_spread_l\",\n            \"value\": \"{{close_spread_l}}\",\n            \"new\": true\n        },\n        {\n            \"type\": \"setVariable\",\n            \"name\": \"close_spread_m\",\n            \"value\": \"{{close_spread_m}}\",\n            \"new\": true\n        },\n        {\n            \"type\": \"setVariable\",\n            \"name\": \"close_spread_s\",\n            \"value\": \"{{close_spread_s}}\",\n            \"new\": true\n        }\n    ],\n    \"enabled\": true\n}"
+						},
+						"url": {
+							"raw": "https://ftx.com/api/quantzone/rules",
+							"protocol": "https",
+							"host": [
+								"ftx",
+								"com"
+							],
+							"path": [
+								"api",
+								"quantzone",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Show Open Spread",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "ftx.com"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Google Chrome\";v=\"89\", \"Chromium\";v=\"89\", \";Not A Brand\";v=\"99\""
+							},
+							{
+								"key": "authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "ftx-client",
+								"value": "web"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
+							},
+							{
+								"key": "ftx-subaccount",
+								"value": "{{sub_account}}"
+							},
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "origin",
+								"value": "https://ftx.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://ftx.com/quant-zone/rules/new"
+							},
+							{
+								"key": "accept-language",
+								"value": "en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7"
+							},
+							{
+								"key": "cookie",
+								"value": "__cfduid=d981e857042ba9f5d8d8441afea2d27781618337076; _ga=GA1.2.1341219748.1618337078; _gid=GA1.2.1843541768.1618337078; _fbp=fb.1.1618337086817.655571413"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"{{spot}} Show Open Spread\",\"condition\":\"bid_price(\\\"{{spot}}-PERP\\\")/offer_price(\\\"{{spot}}/USD\\\") > 1.002\",\"actions\":[{\"type\":\"setVariable\",\"name\":\"open_spread_value\",\"value\":\"bid_price(\\\"{{spot}}-PERP\\\")/offer_price(\\\"{{spot}}/USD\\\")\"}],\"enabled\":true}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ftx.com/api/quantzone/rules",
+							"protocol": "https",
+							"host": [
+								"ftx",
+								"com"
+							],
+							"path": [
+								"api",
+								"quantzone",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Open",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "ftx.com"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Google Chrome\";v=\"89\", \"Chromium\";v=\"89\", \";Not A Brand\";v=\"99\""
+							},
+							{
+								"key": "authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "ftx-client",
+								"value": "web"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
+							},
+							{
+								"key": "ftx-subaccount",
+								"value": "{{sub_account}}"
+							},
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "origin",
+								"value": "https://ftx.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://ftx.com/quant-zone/rules/new"
+							},
+							{
+								"key": "accept-language",
+								"value": "en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7"
+							},
+							{
+								"key": "cookie",
+								"value": "__cfduid=d981e857042ba9f5d8d8441afea2d27781618337076; _ga=GA1.2.1341219748.1618337078; _gid=GA1.2.1843541768.1618337078; _fbp=fb.1.1618337086817.655571413; _gat=1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"{{spot}} Open\",\"condition\":\"balance_free(\\\"USD\\\") > 0 and (\\n  (leverage > 1.2 and bid_price(\\\"{{spot}}-PERP\\\")/offer_price(\\\"{{spot}}/USD\\\") > get_variable(\\\"open_spread_s\\\")) or \\n  (leverage <= 1.2 and bid_price(\\\"{{spot}}-PERP\\\")/offer_price(\\\"{{spot}}/USD\\\") > get_variable(\\\"open_spread_m\\\")) or \\n  (leverage <= 1.1 and bid_price(\\\"{{spot}}-PERP\\\")/offer_price(\\\"{{spot}}/USD\\\") > get_variable(\\\"open_spread_l\\\"))\\n)\",\"actions\":[{\"market\":\"{{spot}}/USD\",\"side\":\"buy\",\"orderType\":\"market\",\"type\":\"place\",\"size\":\"min(min(get_variable(\\\"amount\\\"),ceil(get_variable(\\\"usd_amount\\\")/price(\\\"{{spot}}/USD\\\"))),(balance_free(\\\"USD\\\")/price(\\\"{{spot}}/USD\\\")))/(1-get_variable(\\\"taker_fee\\\"))\",\"postOnly\":false,\"replaceExisting\":true},{\"market\":\"{{spot}}-PERP\",\"side\":\"sell\",\"orderType\":\"market\",\"type\":\"place\",\"size\":\"min(min(get_variable(\\\"amount\\\"),ceil(get_variable(\\\"usd_amount\\\")/price(\\\"{{spot}}/USD\\\"))),(balance_free(\\\"USD\\\")/price(\\\"{{spot}}/USD\\\")))\",\"postOnly\":false,\"replaceExisting\":true,\"new\":true}],\"enabled\":true}"
+						},
+						"url": {
+							"raw": "https://ftx.com/api/quantzone/rules",
+							"protocol": "https",
+							"host": [
+								"ftx",
+								"com"
+							],
+							"path": [
+								"api",
+								"quantzone",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. 多級距自動降低槓杆 (半) 賺錢",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "ftx.com"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Google Chrome\";v=\"89\", \"Chromium\";v=\"89\", \";Not A Brand\";v=\"99\""
+							},
+							{
+								"key": "authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "ftx-client",
+								"value": "web"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
+							},
+							{
+								"key": "ftx-subaccount",
+								"value": "{{sub_account}}"
+							},
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "origin",
+								"value": "https://ftx.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://ftx.com/quant-zone/rules/new"
+							},
+							{
+								"key": "accept-language",
+								"value": "en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7"
+							},
+							{
+								"key": "cookie",
+								"value": "__cfduid=d981e857042ba9f5d8d8441afea2d27781618337076; _ga=GA1.2.1341219748.1618337078; _gid=GA1.2.1843541768.1618337078; _fbp=fb.1.1618337086817.655571413"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"{{spot}} 多級距自動降低槓杆 (半) 賺錢\",\"condition\":\"balance(\\\"{{spot}}\\\") > 0 and liquidation_distance >= 0.16 and\\n(\\n  (liquidation_distance >= 0.4 and offer_price(\\\"{{spot}}-PERP\\\")/bid_price(\\\"{{spot}}/USD\\\") < get_variable(\\\"close_spread_xl\\\")) or\\n  ((liquidation_distance < 0.4 or balance(\\\"USD\\\") > 0) and offer_price(\\\"{{spot}}-PERP\\\")/bid_price(\\\"{{spot}}/USD\\\") < get_variable(\\\"close_spread_l\\\")) or\\n  (liquidation_distance < 0.25 and offer_price(\\\"{{spot}}-PERP\\\")/bid_price(\\\"{{spot}}/USD\\\") < get_variable(\\\"close_spread_m\\\"))\\n)\",\"actions\":[{\"market\":\"{{spot}}/USD\",\"side\":\"sell\",\"orderType\":\"market\",\"type\":\"place\",\"size\":\"min(balance(\\\"{{spot}}\\\"),ceil(get_variable(\\\"usd_amount\\\")/price(\\\"{{spot}}/USD\\\"))/2)\",\"replaceExisting\":true},{\"market\":\"{{spot}}-PERP\",\"side\":\"buy\",\"orderType\":\"market\",\"type\":\"place\",\"size\":\"min(position(\\\"{{spot}}-PERP\\\"),min(balance(\\\"{{spot}}\\\"),ceil(get_variable(\\\"usd_amount\\\")/price(\\\"{{spot}}/USD\\\"))/2))\",\"replaceExisting\":true,\"new\":true}],\"enabled\":true}"
+						},
+						"url": {
+							"raw": "https://ftx.com/api/quantzone/rules",
+							"protocol": "https",
+							"host": [
+								"ftx",
+								"com"
+							],
+							"path": [
+								"api",
+								"quantzone",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. 多級距自動降低槓杆 (半) 保命",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "ftx.com"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Google Chrome\";v=\"89\", \"Chromium\";v=\"89\", \";Not A Brand\";v=\"99\""
+							},
+							{
+								"key": "authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "ftx-client",
+								"value": "web"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
+							},
+							{
+								"key": "ftx-subaccount",
+								"value": "{{sub_account}}"
+							},
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "origin",
+								"value": "https://ftx.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://ftx.com/quant-zone/rules/new"
+							},
+							{
+								"key": "accept-language",
+								"value": "en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7"
+							},
+							{
+								"key": "cookie",
+								"value": "__cfduid=d981e857042ba9f5d8d8441afea2d27781618337076; _ga=GA1.2.1341219748.1618337078; _gid=GA1.2.1843541768.1618337078; _fbp=fb.1.1618337086817.655571413"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"{{spot}} 多級距自動降低槓杆 (半) 保命\",\"condition\":\"balance(\\\"{{spot}}\\\") > 0 and liquidation_distance < 0.16 and\\n(\\n  (liquidation_distance < 0.16 and offer_price(\\\"{{spot}}-PERP\\\")/bid_price(\\\"{{spot}}/USD\\\") < get_variable(\\\"close_spread_s\\\")) or\\n  (liquidation_distance < 0.13)\\n)\",\"actions\":[{\"market\":\"{{spot}}/USD\",\"side\":\"sell\",\"orderType\":\"market\",\"type\":\"place\",\"size\":\"min(balance(\\\"{{spot}}\\\"),ceil(get_variable(\\\"usd_amount\\\")/price(\\\"{{spot}}/USD\\\"))/2)\",\"replaceExisting\":true},{\"market\":\"{{spot}}-PERP\",\"side\":\"buy\",\"orderType\":\"market\",\"type\":\"place\",\"size\":\"min(position(\\\"{{spot}}-PERP\\\"),min(balance(\\\"{{spot}}\\\"),ceil(get_variable(\\\"usd_amount\\\")/price(\\\"{{spot}}/USD\\\"))/2))\",\"replaceExisting\":true,\"new\":true}],\"enabled\":true}"
+						},
+						"url": {
+							"raw": "https://ftx.com/api/quantzone/rules",
+							"protocol": "https",
+							"host": [
+								"ftx",
+								"com"
+							],
+							"path": [
+								"api",
+								"quantzone",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. 現貨大於持倉 - 空永續",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "ftx.com"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Google Chrome\";v=\"89\", \"Chromium\";v=\"89\", \";Not A Brand\";v=\"99\""
+							},
+							{
+								"key": "authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "ftx-client",
+								"value": "web"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
+							},
+							{
+								"key": "ftx-subaccount",
+								"value": "{{sub_account}}"
+							},
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "origin",
+								"value": "https://ftx.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://ftx.com/quant-zone/rules/new"
+							},
+							{
+								"key": "accept-language",
+								"value": "en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7"
+							},
+							{
+								"key": "cookie",
+								"value": "__cfduid=d981e857042ba9f5d8d8441afea2d27781618337076; _ga=GA1.2.1341219748.1618337078; _gid=GA1.2.1843541768.1618337078; _fbp=fb.1.1618337086817.655571413"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"{{spot}} 現貨大於持倉 - 空永續\",\"condition\":\"balance(\\\"{{spot}}\\\") - position(\\\"{{spot}}-PERP\\\") > get_variable(\\\"quantity_step\\\")\",\"actions\":[{\"market\":\"{{spot}}-PERP\",\"side\":\"sell\",\"orderType\":\"limit\",\"type\":\"place\",\"size\":\"balance(\\\"{{spot}}\\\") - position(\\\"{{spot}}-PERP\\\")\",\"limitPrice\":\"offer_price(\\\"{{spot}}-PERP\\\")\",\"postOnly\":true,\"replaceExisting\":true}],\"enabled\":true}"
+						},
+						"url": {
+							"raw": "https://ftx.com/api/quantzone/rules",
+							"protocol": "https",
+							"host": [
+								"ftx",
+								"com"
+							],
+							"path": [
+								"api",
+								"quantzone",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. 現貨小於持倉 - 買永續",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "ftx.com"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Google Chrome\";v=\"89\", \"Chromium\";v=\"89\", \";Not A Brand\";v=\"99\""
+							},
+							{
+								"key": "authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "ftx-client",
+								"value": "web"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
+							},
+							{
+								"key": "ftx-subaccount",
+								"value": "{{sub_account}}"
+							},
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "origin",
+								"value": "https://ftx.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://ftx.com/quant-zone/rules/new"
+							},
+							{
+								"key": "accept-language",
+								"value": "en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7"
+							},
+							{
+								"key": "cookie",
+								"value": "__cfduid=d981e857042ba9f5d8d8441afea2d27781618337076; _ga=GA1.2.1341219748.1618337078; _gid=GA1.2.1843541768.1618337078; _fbp=fb.1.1618337086817.655571413"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"{{spot}} 現貨小於持倉 - 買永續\",\"condition\":\"position(\\\"{{spot}}-PERP\\\") - balance(\\\"{{spot}}\\\") > get_variable(\\\"quantity_step\\\")\",\"actions\":[{\"market\":\"{{spot}}-PERP\",\"side\":\"buy\",\"orderType\":\"limit\",\"type\":\"place\",\"size\":\"position(\\\"{{spot}}-PERP\\\")-balance(\\\"{{spot}}\\\")\",\"limitPrice\":\"bid_price(\\\"{{spot}}-PERP\\\")\",\"postOnly\":true,\"replaceExisting\":true}],\"enabled\":true}"
+						},
+						"url": {
+							"raw": "https://ftx.com/api/quantzone/rules",
+							"protocol": "https",
+							"host": [
+								"ftx",
+								"com"
+							],
+							"path": [
+								"api",
+								"quantzone",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. Show Close Spread",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "ftx.com"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Google Chrome\";v=\"89\", \"Chromium\";v=\"89\", \";Not A Brand\";v=\"99\""
+							},
+							{
+								"key": "authorization",
+								"value": "{{auth_token}}"
+							},
+							{
+								"key": "ftx-client",
+								"value": "web"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
+							},
+							{
+								"key": "ftx-subaccount",
+								"value": "{{sub_account}}"
+							},
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "origin",
+								"value": "https://ftx.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://ftx.com/quant-zone/rules/new"
+							},
+							{
+								"key": "accept-language",
+								"value": "en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7"
+							},
+							{
+								"key": "cookie",
+								"value": "__cfduid=d981e857042ba9f5d8d8441afea2d27781618337076; _ga=GA1.2.1341219748.1618337078; _gid=GA1.2.1843541768.1618337078; _fbp=fb.1.1618337086817.655571413"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"{{spot}} Show Close Spread\",\"condition\":\"offer_price(\\\"{{spot}}-PERP\\\")/bid_price(\\\"{{spot}}/USD\\\") < 1\",\"actions\":[{\"type\":\"setVariable\",\"name\":\"close_spread_value\",\"value\":\"offer_price(\\\"{{spot}}-PERP\\\")/bid_price(\\\"{{spot}}/USD\\\")\"}],\"enabled\":false}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ftx.com/api/quantzone/rules",
+							"protocol": "https",
+							"host": [
+								"ftx",
+								"com"
+							],
+							"path": [
+								"api",
+								"quantzone",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "auth_token",
+			"value": ""
+		},
+		{
+			"key": "open_spread_xl",
+			"value": "1.02"
+		},
+		{
+			"key": "open_spread_l",
+			"value": "1.005"
+		},
+		{
+			"key": "open_spread_m",
+			"value": "1.004"
+		},
+		{
+			"key": "open_spread_s",
+			"value": "1.003"
+		},
+		{
+			"key": "close_spread_xl",
+			"value": "0.985"
+		},
+		{
+			"key": "close_spread_l",
+			"value": "0.995"
+		},
+		{
+			"key": "close_spread_m",
+			"value": "1"
+		},
+		{
+			"key": "close_spread_s",
+			"value": "1.003"
+		}
+	]
+}
