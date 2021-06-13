@@ -363,7 +363,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"name\":\"{{spot}} Open 反向 (SM)\",\"condition\":\"free_collateral > 0 and liquidation_distance >= 0.15 and (\\n  (leverage <= 1 and bid_price(\\\"{{spot}}/USD\\\")/offer_price(\\\"{{spot}}-PERP\\\") > get_variable(\\\"open_spread_s\\\")) or \\n  (leverage <= 3 and bid_price(\\\"{{spot}}/USD\\\")/offer_price(\\\"{{spot}}-PERP\\\") > get_variable(\\\"open_spread_m\\\")) or \\n  (leverage <= 4 and bid_price(\\\"{{spot}}/USD\\\")/offer_price(\\\"{{spot}}-PERP\\\") > get_variable(\\\"open_spread_l\\\")) or \\n  (leverage <= 4.5 and bid_price(\\\"{{spot}}/USD\\\")/offer_price(\\\"{{spot}}-PERP\\\") > get_variable(\\\"open_spread_xl\\\"))\\n)\",\"actions\":[{\"market\":\"{{spot}}-PERP\",\"side\":\"buy\",\"orderType\":\"market\",\"type\":\"place\",\"size\":\"min(min(get_variable(\\\"amount\\\"),ceil(get_variable(\\\"usd_amount\\\")/price(\\\"{{spot}}/USD\\\"))),((free_collateral * 0.8)/price(\\\"{{spot}}-PERP\\\")))\",\"postOnly\":false,\"replaceExisting\":true},{\"market\":\"{{spot}}/USD\",\"side\":\"sell\",\"orderType\":\"market\",\"type\":\"place\",\"size\":\"min(min(get_variable(\\\"amount\\\"),ceil(get_variable(\\\"usd_amount\\\")/price(\\\"{{spot}}/USD\\\"))),((free_collateral * 0.8)/price(\\\"{{spot}}-PERP\\\")))\",\"postOnly\":false,\"replaceExisting\":true,\"new\":true}],\"enabled\":true}"
+							"raw": "{\"name\":\"{{spot}} Open 反向 (SM)\",\"condition\":\"free_collateral > 0 and liquidation_distance >= 0.15 and (\\n  (leverage <= 2 and bid_price(\\\"{{spot}}/USD\\\")/offer_price(\\\"{{spot}}-PERP\\\") > get_variable(\\\"open_spread_s\\\")) or \\n  (leverage <= 3 and bid_price(\\\"{{spot}}/USD\\\")/offer_price(\\\"{{spot}}-PERP\\\") > get_variable(\\\"open_spread_m\\\")) or \\n  (leverage <= 4 and bid_price(\\\"{{spot}}/USD\\\")/offer_price(\\\"{{spot}}-PERP\\\") > get_variable(\\\"open_spread_l\\\")) or \\n  (leverage <= 4.5 and bid_price(\\\"{{spot}}/USD\\\")/offer_price(\\\"{{spot}}-PERP\\\") > get_variable(\\\"open_spread_xl\\\"))\\n)\",\"actions\":[{\"market\":\"{{spot}}-PERP\",\"side\":\"buy\",\"orderType\":\"market\",\"type\":\"place\",\"size\":\"min(min(get_variable(\\\"amount\\\"),ceil(get_variable(\\\"usd_amount\\\")/price(\\\"{{spot}}/USD\\\"))),((free_collateral * 0.8)/price(\\\"{{spot}}-PERP\\\")))\",\"postOnly\":false,\"replaceExisting\":true},{\"market\":\"{{spot}}/USD\",\"side\":\"sell\",\"orderType\":\"market\",\"type\":\"place\",\"size\":\"min(min(get_variable(\\\"amount\\\"),ceil(get_variable(\\\"usd_amount\\\")/price(\\\"{{spot}}/USD\\\"))),((free_collateral * 0.8)/price(\\\"{{spot}}-PERP\\\")))\",\"postOnly\":false,\"replaceExisting\":true,\"new\":true}],\"enabled\":true}"
 						},
 						"url": {
 							"raw": "https://ftx.com/api/quantzone/rules",
@@ -543,7 +543,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"name\":\"{{spot}} 做多(永續)大於做空(現貨) - 減少做多(永續)\",\"condition\":\"position(\\\"{{spot}}-PERP\\\") - (balance(\\\"{{spot}}\\\") * -1) > get_variable(\\\"quantity_step\\\")\",\"actions\":[{\"market\":\"{{spot}}-PERP\",\"side\":\"sell\",\"orderType\":\"limit\",\"type\":\"place\",\"size\":\"position(\\\"{{spot}}-PERP\\\") - (balance(\\\"{{spot}}\\\") * -1)\",\"limitPrice\":\"offer_price(\\\"{{spot}}-PERP\\\")\",\"postOnly\":true,\"replaceExisting\":true}],\"enabled\":true}"
+							"raw": "{\"name\":\"{{spot}} 做多(永續)大於做空(現貨) - 減少做多(永續)\",\"condition\":\"(position_side(\\\"{{spot}}-PERP\\\") >= 0) and (balance(\\\"{{spot}}\\\") <= 0) and\\n(position(\\\"{{spot}}-PERP\\\") - (balance(\\\"{{spot}}\\\") * -1) > get_variable(\\\"quantity_step\\\"))\",\"actions\":[{\"market\":\"{{spot}}-PERP\",\"side\":\"sell\",\"orderType\":\"limit\",\"type\":\"place\",\"size\":\"position(\\\"{{spot}}-PERP\\\") - (balance(\\\"{{spot}}\\\") * -1)\",\"limitPrice\":\"offer_price(\\\"{{spot}}-PERP\\\")\",\"postOnly\":true,\"replaceExisting\":true}],\"enabled\":true}"
 						},
 						"url": {
 							"raw": "https://ftx.com/api/quantzone/rules",
@@ -633,7 +633,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"name\":\"{{spot}} 做多(永續)小於做空(現貨) - 減少做空(買現貨)\",\"condition\":\"(balance(\\\"{{spot}}\\\")*-1) - position(\\\"{{spot}}-PERP\\\") > get_variable(\\\"quantity_step\\\")\",\"actions\":[{\"market\":\"{{spot}}/USD\",\"side\":\"buy\",\"orderType\":\"limit\",\"type\":\"place\",\"size\":\"(balance(\\\"{{spot}}\\\")*-1) - position(\\\"{{spot}}-PERP\\\")\",\"limitPrice\":\"bid_price(\\\"{{spot}}/USD\\\")\",\"postOnly\":true,\"replaceExisting\":true}],\"enabled\":true}"
+							"raw": "{\"name\":\"{{spot}} 做多(永續)小於做空(現貨) - 減少做空(買現貨)\",\"condition\":\"(position_side(\\\"{{spot}}-PERP\\\") >= 0) and (balance(\\\"{{spot}}\\\") <= 0) and\\n(balance(\\\"{{spot}}\\\")*-1) - position(\\\"{{spot}}-PERP\\\") > get_variable(\\\"quantity_step\\\")\",\"actions\":[{\"market\":\"{{spot}}/USD\",\"side\":\"buy\",\"orderType\":\"limit\",\"type\":\"place\",\"size\":\"(balance(\\\"{{spot}}\\\")*-1) - position(\\\"{{spot}}-PERP\\\")\",\"limitPrice\":\"bid_price(\\\"{{spot}}/USD\\\")\",\"postOnly\":true,\"replaceExisting\":true}],\"enabled\":true}"
 						},
 						"url": {
 							"raw": "https://ftx.com/api/quantzone/rules",
@@ -780,23 +780,23 @@
 		},
 		{
 			"key": "open_spread_l",
-			"value": "1.005"
+			"value": "1.01"
 		},
 		{
 			"key": "open_spread_m",
-			"value": "1.004"
+			"value": "1.007"
 		},
 		{
 			"key": "open_spread_s",
-			"value": "1.003"
+			"value": "1.005"
 		},
 		{
 			"key": "close_spread_xl",
-			"value": "0.985"
+			"value": "0.99"
 		},
 		{
 			"key": "close_spread_l",
-			"value": "0.995"
+			"value": "0.998"
 		},
 		{
 			"key": "close_spread_m",
